@@ -1,0 +1,27 @@
+{
+  "name": "leasure-api",
+  "version": "1.0.0",
+  "description": "- Leasure-api wiht node.js, express.js, and MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Haokun-Chen/leasure-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Haokun-Chen/leasure-api/issues"
+  },
+  "homepage": "https://github.com/Haokun-Chen/leasure-api#readme",
+  "dependencies": {
+    "config": "^2.0.1",
+    "express": "^4.16.3",
+    "joi": "^13.5.2",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.7"
+  }
+}
