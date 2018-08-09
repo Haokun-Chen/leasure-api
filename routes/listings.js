@@ -1,11 +1,13 @@
 const { Listing, validate } = require('../models/listing'); 
 const validateObjectId = require('../middleware/validateObjectId');
 
+const auth = require('../middleware/auth');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
 const url = require('url');
 
+// get all listings filter with location, availability
 router.get('/', async (req, res) => {
     console.log(url.parse(req.url, true).query);
 
@@ -14,7 +16,7 @@ router.get('/', async (req, res) => {
 });
 
 // validate authentication for posting new listing
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
     const { error } = validate(req.body); 
     if (error) return res.status(400).send(error.details[0].message);
   
@@ -27,6 +29,7 @@ router.post('/', async (req, res) => {
     res.send(listing);
 });
 
+// specific listing page, middleware to validate request params _id
 router.get('/:id', validateObjectId, async (req, res) => {
     const listing = await Listing.findById(req.params.id);
   

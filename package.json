@@ -18,11 +18,13 @@
   },
   "homepage": "https://github.com/Haokun-Chen/leasure-api#readme",
   "dependencies": {
+    "bcrypt": "^3.0.0",
     "config": "^2.0.1",
     "express": "^4.16.3",
     "joi": "^13.5.2",
     "joi-objectid": "^2.0.0",
     "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
     "mongoose": "^5.2.7",
     "morgan": "^1.9.0"
   }

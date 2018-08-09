@@ -42,12 +42,12 @@ const Listing = mongoose.model('Listings', new mongoose.Schema({
     //     required: true,
     //     min: 0,
     // },
-    // checkinDate: {
+    // moveInDate: {
     //     type: Date,
     //     required: true,
     //     default: Date.now
     // },
-    // checkoutDate: {
+    // moveOutDate: {
     //     type: Date,
     //     required: true,
     // },
