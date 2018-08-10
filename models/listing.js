@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
 
+// define a model with Schema to describe a document in the  Mongodb collection 
 const Listing = mongoose.model('Listings', new mongoose.Schema({
     title: {
       type: String,

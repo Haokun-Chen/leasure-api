@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     res.send(listings);
 });
 
-// validate authentication for posting new listing
+// route protected, only current logged in user can posting new listing
 router.post('/', auth, async (req, res) => {
     const { error } = validate(req.body); 
     if (error) return res.status(400).send(error.details[0].message);
