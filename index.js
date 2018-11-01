@@ -3,7 +3,9 @@ const app = express();
 const cors = require('cors');
 
 app.use(cors({
-    origin: 'http://localhost:8080'
+    origin: 'http://localhost:8080',
+    exposedHeaders: 'x-auth-token',
+    credentials: true
 }));
 
 require('./startup/routes')(app);

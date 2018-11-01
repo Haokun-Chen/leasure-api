@@ -22,7 +22,14 @@ router.post('/', auth, async (req, res) => {
   
     const listing = new Listing({ 
       title: req.body.title,
+      rooms: req.body.rooms,
+      baths: req.body.baths,
       bathType: req.body.bathType,
+      description: req.body.description,
+      rent: req.body.rent,
+      moveInDate: req.body.moveInDate,
+      moveOutDate: req.body.moveOutDate,
+      geolocation: req.body.geolocation
     });
     await listing.save();
     

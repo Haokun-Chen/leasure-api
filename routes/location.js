@@ -10,17 +10,18 @@ router.get('/', async (req, res) => {
     res.send(locations);
 });
 
-router.post('/', async (req, res) => {
-    const { error } = validate(req.body); 
-    if (error) return res.status(400).send(error.details[0].message);
+// add a location to the app
+// router.post('/', async (req, res) => {
+//     const { error } = validate(req.body); 
+//     if (error) return res.status(400).send(error.details[0].message);
   
-    const location = new Location({ 
-      state: req.body.state,
-      city: req.body.city,
-    });
-    await location.save();
+//     const location = new Location({ 
+//       state: req.body.state,
+//       city: req.body.city,
+//     });
+//     await location.save();
     
-    res.send(location);
-});
+//     res.send(location);
+// });
 
 module.exports = router; 
