@@ -9,9 +9,18 @@ const url = require('url');
 
 // get all listings filter with location, availability
 router.get('/', async (req, res) => {
-    console.log(url.parse(req.url, true).query);
+    const query = url.parse(req.url, true).query;
 
-    const listings = await Listing.find().sort('title');
+    let listings;
+    if (query.checkin && query.checkout) {
+        listings = await Listing.find().where('moveInDate').lte(query.checkin).where('moveOutDate').gte(query.checkout).sort('title');
+    } else if (query.checkin) {
+        listings = await Listing.find().where('moveInDate').lte(query.checkin).sort('title');
+    } else if (query.checkout) {
+        listings = await Listing.find().where('moveOutDate').gte(query.checkout).sort('title');
+    } else {
+        listings = await Listing.find().sort('title');
+    }
     res.send(listings);
 });
 
@@ -29,7 +38,7 @@ router.post('/', auth, async (req, res) => {
       rent: req.body.rent,
       moveInDate: req.body.moveInDate,
       moveOutDate: req.body.moveOutDate,
-      geolocation: req.body.geolocation
+    //   geolocation: req.body.geolocation
     });
     await listing.save();
     

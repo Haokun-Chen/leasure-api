@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
     maxlength: 1024,
   },
   phone: {
-    type: Number,
+    type: String,
     // required: true,
     minlength: 10,
     maxlength: 10,
@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema({
 
 // generate token with user id
 userSchema.methods.generateAuthToken = function() { 
-  const token = jwt.sign({ _id: this._id }, config.get('jwtPrivateKey'), { expiresIn: 60*120 });
+  const token = jwt.sign({ _id: this._id, firstName:this.firstName }, config.get('jwtPrivateKey'), { expiresIn: 60*120 });
   return token;
 }
 
@@ -51,7 +51,7 @@ function validateUser(user) {
     lastName: Joi.string().min(1).max(50).required(),
     email: Joi.string().min(5).max(255).required().email(),
     password: Joi.string().min(8).max(1024).required(),
-    phone: Joi.number().min(1000000000)
+    phone: Joi.string().min(10).max(10)
   };
 
   return Joi.validate(user, schema);

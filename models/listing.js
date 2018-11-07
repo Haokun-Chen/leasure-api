@@ -35,17 +35,17 @@ const Listing = mongoose.model('Listings', new mongoose.Schema({
         required: true,
         minlength: 50
     },
-    geolocation: {
-      type: {
-        type: String,
-        enum: ['Point'],
-        required: true
-      },
-      coordinates: {
-        type: [Number],
-        required: true
-      }
-    },
+    // geolocation: {
+    //   type: {
+    //     type: String,
+    //     enum: ['Point'],
+    //     required: true
+    //   },
+    //   coordinates: {
+    //     type: [Number],
+    //     required: true
+    //   }
+    // },
     // latitude: {
     //     type: Number,
     //     required: true,
@@ -73,12 +73,11 @@ const Listing = mongoose.model('Listings', new mongoose.Schema({
     //     min: 0,
     // },
     moveInDate: {
-        type: Date,
+        type: String,
         required: true,
-        default: Date.now
     },
     moveOutDate: {
-        type: Date,
+        type: String,
         required: true,
     },
     // amentities: {
@@ -99,10 +98,10 @@ const Listing = mongoose.model('Listings', new mongoose.Schema({
       rent: Joi.number().min(0).required(),
       moveInDate: Joi.date().required(),
       moveOutDate: Joi.date().required(),
-      geolocation: Joi.object().keys({
-        type: Joi.string().valid('Point').required(),
-        coordinates: Joi.array().ordered(Joi.number().min(-180).max(180).required(), Joi.number().min(-90).max(90).required()).required()
-      }).required()
+      // geolocation: Joi.object().keys({
+      //   type: Joi.string().valid('Point').required(),
+      //   coordinates: Joi.array().ordered(Joi.number().min(-180).max(180).required(), Joi.number().min(-90).max(90).required()).required()
+      // })
     };
   
     return Joi.validate(listing, schema);
